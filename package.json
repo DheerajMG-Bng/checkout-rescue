@@ -1,0 +1,15 @@
+{
+  "name": "checkout-rescue",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A reproducible checkout incident resolved by teammates and Codex agents through Switch.",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "incident": "node scripts/rescue.mjs",
+    "demo": "node scripts/example.mjs",
+    "start": "node scripts/viewer.mjs"
+  },
+  "license": "MIT"
+}

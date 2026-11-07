@@ -1,0 +1,13 @@
+{
+  "id": "CR-001",
+  "title": "SAVE10 is applied twice",
+  "scenario": "Intentionally seeded demo regression; no production customer data.",
+  "report": "One item costs INR 1,000. With a 10% coupon and no tax or shipping, checkout asks for INR 810. I expected INR 900.",
+  "order": {
+    "items": [{ "sku": "DEMO-TSHIRT", "unitPricePaise": 100000, "quantity": 1 }],
+    "discountBps": 1000,
+    "taxBps": 0,
+    "shippingFeePaise": 0
+  },
+  "expectedTotalPaise": 90000
+}
