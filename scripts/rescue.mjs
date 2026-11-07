@@ -75,8 +75,11 @@ try {
   } else if (command === 'status') {
     const state = await readState();
     console.log(JSON.stringify(state, null, 2));
+  } else if (command === 'postmortem') {
+    const postmortemScript = join(projectRoot, 'scripts', 'postmortem.mjs');
+    spawnSync(process.execPath, [postmortemScript], { stdio: 'inherit' });
   } else if (command === 'help') {
-    console.log('Checkout Rescue\n  start       Create a seeded demo incident\n  reproduce   Run regression checks and retain real output (exit 1 is expected)\n  approve --by @user --message "approval message/link"\n  verify      Verify the agent-edited checkout after review\n  status      Print the recorded incident\nSet RESCUE_HOME for an independent lab. Approval is operator-recorded, not identity authentication.');
+    console.log('Checkout Rescue\n  start       Create a seeded demo incident\n  reproduce   Run regression checks and retain real output (exit 1 is expected)\n  approve --by @user --message "approval message/link"\n  verify      Verify the agent-edited checkout after review\n  postmortem  Generate executive incident postmortem\n  status      Print the recorded incident\nSet RESCUE_HOME for an independent lab. Approval is operator-recorded, not identity authentication.');
   } else throw new Error(`Unknown command: ${command}`);
 } catch (error) {
   console.error(`Checkout Rescue: ${error.code === 'ENOENT' ? 'No incident found. Run npm run incident -- start first.' : error.message}`);

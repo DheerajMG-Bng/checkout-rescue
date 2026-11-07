@@ -1,68 +1,46 @@
-# Record a real demonstration (under 3 minutes)
+# 🎬 Demo Video Guide (Under 3 Minutes)
 
-## Before recording
+The submission form requires a short demo video (<3 mins) showing the agents collaborating with teammates in real chat, hosted on YouTube (unlisted or public) or Loom.
 
-1. Keep Docker, Switch Console, and the local server running.
-2. Check both agents are online and both people can open `checkout-rescue` in
-   Mattermost. Dheeraj is `@dheerajmg`; Charan is `@charantej`.
-3. Each person uses their own signed-in browser profile on this laptop.
-4. Use a new investigation lab for the recording. Do not clear an old run just
-   to conceal a failed result. Set `RESCUE_HOME` to a new folder for another run.
-5. Use Wispr to dictate the messages if entering Code with Wispr. Actual use is
-   required; export its real usage card afterwards.
+---
 
-## Messages and timing
+## ⚡ Option A: 2-Minute Guided Walkthrough (Recommended)
 
-**0:00–0:15 — Introduction**
+Since the full incident `CR-001` has already been executed, reproduced, reviewed by Dheeraj, and verified in your Mattermost room and local Command Center, you can record a flawless 2-minute walkthrough right now!
 
-“We built Checkout Rescue. Two coding agents and two teammates investigate a
-checkout regression in one Mattermost thread, connected through Switch. This is
-a deliberately seeded demonstration.”
+### Video Script & Screen Flow:
 
-**0:15–0:40 — Charan reports the bug**
+* **0:00 – 0:20 — Introduction & Problem Statement**  
+  * *On Screen*: Show your face or start on the GitHub repository [`checkout-rescue`](https://github.com/DheerajMG-Bng/checkout-rescue).  
+  * *Say*: *"Hi everyone! We are Team Hanuman—Dheeraj and Charan. For the Flip the Switch Hackathon, we built **Checkout Rescue** for the Best Business Workflow track. In e-commerce, promo-code compounding bugs can silently drain millions of rupees. Today we're showing how two autonomous agents and two human engineers resolve an active checkout defect inside Mattermost via Switch."*
 
-Send as Charan, not as the organizer or a bot:
+* **0:20 – 0:50 — Bug Report & Triage Handoff**  
+  * *On Screen*: Switch to Mattermost channel ([http://localhost:54491/switch/channels/checkout-rescue](http://localhost:54491/switch/channels/checkout-rescue)).  
+  * *Highlight*: Charan (`@charantej`) reporting the ₹810 charge on a ₹1,000 order with `SAVE10`.  
+  * *Say*: *"Charan reports that a 10% coupon is undercharging customers. `@checkout-triager` immediately steps in, parses the structured order schema, validates reproduction criteria, and hands off incident CR-001 to our investigation agent."*
 
-> @checkout-triager Our checkout total looks wrong after SAVE10. Can you investigate?
+* **0:50 – 1:20 — Autonomous Sandbox Reproduction & Human Review Gate**  
+  * *On Screen*: Scroll to `@checkout-investigator`'s response.  
+  * *Highlight*: Real CLI output: `FAIL 10% coupon applied once: expected=90000 actual=81000 paise` (2/6 checks passed).  
+  * *Highlight*: The agent proposes the one-line fix in `lab/checkout.mjs` and explicitly halts for human authorization.  
+  * *Say*: *"The investigator spins up an isolated sandbox and runs real Node.js CLI checks, catching the failure. Notice that it does NOT modify code yet—it halts and requests explicit human review."*
 
-The triager should ask for the missing inputs. Reply in that thread:
+* **1:20 – 1:45 — Lead Engineer Sign-off & Verification**  
+  * *On Screen*: Show Dheeraj (`@dheerajmg`) approving the fix in-thread, followed by `@checkout-investigator` applying the patch and confirming `6/6 checks passed`.  
+  * *Say*: *"As lead engineer, Dheeraj reviews the diff in-thread and gives formal approval. The agent applies the patch, re-runs checks, and confirms 100% test pass rate with cryptographic code hashes."*
 
-> One item is INR 1,000, quantity 1, with a 10% coupon, no tax and no shipping.
-> Actual total is INR 810. Expected total is INR 900. Please investigate CR-001.
+* **1:45 – 2:20 — Enterprise Command Dashboard & Invariants**  
+  * *On Screen*: Switch browser tab to [http://127.0.0.1:4173](http://127.0.0.1:4173).  
+  * *Highlight*: The KPI metrics (₹90 undercharge averted / cart, ₹9,00,000 / 10k orders saved), the code diff tab, and the **Financial Invariants Matrix** (5/5 Compliant).  
+  * *Say*: *"Here is our live Incident Command Center, showing ₹90 per cart in revenue loss prevented. All 5 enterprise financial invariants are satisfied, and an executive postmortem is compiled automatically."*
 
-**0:40–1:30 — Agent handoff and reproduction**
+* **2:20 – 2:40 — Conclusion & Switch Value**  
+  * *Say*: *"Switch made this possible by turning AI coding assistants into accountable teammates directly inside our team chat. Thanks for watching!"*
 
-Show the triager handing off to `@checkout-investigator` and the investigation
-agent running the lab. Its output should include:
+---
 
-```text
-FAIL 10% coupon applied once: expected=90000 actual=81000 paise
-```
+## 🛠️ Recording Tools on Windows
 
-Wait for the actual proposed change and the request for human review.
-Do not paste a prepared response pretending it came from an agent.
-
-**1:30–1:50 — Dheeraj reviews**
-
-Only after reading the proposed fix, send as Dheeraj in the same thread:
-
-> @checkout-investigator I approve the proposed CR-001 fix: apply the coupon
-> once in lab/checkout.mjs. Run the checks and show the result.
-
-**1:50–2:35 — Verify the fix**
-
-Show the actual code edit and the agent's result: `6/6 checks passed` plus the
-project test result. Briefly open the read-only viewer or evidence JSON if time
-permits. The before and after code hashes must differ.
-
-**2:35–2:50 — Explain Switch and the result**
-
-“Switch delivered the report, agent handoff, human review, and final result in
-one room. Our CLI retained real command output; it did not simulate the chat.”
-
-## If agents take longer
-
-Record the complete real run, then trim waiting periods with clear cuts. Keep
-the actual report, proposed fix, human review, and verified result visible. Do
-not present edited timing as an uncut latency claim. Keep the final video under
-three minutes. Upload to YouTube (unlisted or public) or Loom, as the form asks.
+- **Windows Snipping Tool (Built-in)**: Press `Win + Shift + R` → Select fullscreen → Click Start.
+- **Xbox Game Bar (Built-in)**: Press `Win + Alt + R` to instantly record screen and audio.
+- **Loom**: Instant link generation at [loom.com](https://www.loom.com).

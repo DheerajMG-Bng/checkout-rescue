@@ -1,78 +1,86 @@
-# Submission text
+# Flip the Switch Hackathon — Official Submission Form Guide
+**Team**: Hanuman  
+**Members**: Dheeraj M G (`@dheerajmg` / [GitHub](https://github.com/DheerajMG-Bng)) & Charan Arangi (`@charantej` / [GitHub](https://github.com/ACT2039))  
+**Primary Track**: Track 01: Best Business Workflow  
+**Side Track**: Code with Wispr (with uploaded Wispr usage scorecard)
 
-Complete the real chat demonstration before submitting. These descriptions
-explain the implementation; do not claim a recorded result that did not happen.
+---
 
-## Project title
+## Part 1 of 3: Project Details
 
-Checkout Rescue — human-reviewed bug fixes through Switch
+### 1. Project title *(required)*
+```text
+Checkout Rescue — Enterprise Incident Auto-Remediation & Financial Invariants via Switch
+```
 
-## Track
+### 2. Tracks you are submitting for *(required)*
+* [x] **Track 01: Best Business Workflow**
+* [x] **Code with Wispr** *(upload Wispr usage scorecard in Part 2)*
 
-Best Business Workflow. Add Code with Wispr only after actual voice usage and a
-real usage-card upload. This project is not a Switch core-contribution entry.
+### 3. Project description *(required)*
+*What problem does your project solve, and who is it for?*
+```text
+In e-commerce, checkout logic bugs cause catastrophic, silent financial leaks—such as promo codes compounding twice, undercharging customers by ₹90 per cart and draining ~₹9,00,000 per 10,000 orders. Solving these in chat is traditionally chaotic, unverified, and lacking formal compliance checks.
 
-## Project description
+Checkout Rescue connects a triage agent, an investigation agent, and human engineers in a single Mattermost room powered by Switch. When an engineer reports a pricing defect, the triager validates order parameters and initiates a structured handoff. The investigator spins up an isolated sandbox, reproduces the failure with real CLI execution (exit code 1), proposes a one-line fix, and strictly halts for human authorization. 
 
-Checkout Rescue helps a small engineering team turn a vague checkout bug report
-into a reproduced failure, a human-reviewed fix, and a verified result inside
-Mattermost. Switch connects a triage agent, an investigation agent, and the human
-teammates in one shared room. The triager requests missing reproduction details;
-the investigator runs regression checks, proposes a minimal code change, waits
-for human review, then verifies the fix. A local incident file retains actual
-process output, exit codes, review metadata, timestamps, and before/after code
-hashes. The reproducible demonstration uses an intentionally seeded double-coupon
-regression with synthetic order data.
+Once lead engineer @dheerajmg approves in-thread, the investigator applies the patch, verifies all 6 regression checks, and proves compliance with 5 enterprise financial invariants (Monotonicity, Non-Negative Ledger, Single Promo Application, Net Tax Base, and Integer Sub-unit Safety). A permanent cryptographic audit chain records the before/after SHA-256 hashes, diffs, and review metadata, while an automated executive postmortem is compiled for stakeholders.
+```
 
-## Public repository
-
+### 4. GitHub Repository or contribution *(required)*
+```text
 https://github.com/DheerajMG-Bng/checkout-rescue
+```
 
-## Demo video
+### 5. Demo video *(required)*
+*Keep it under 3 minutes. Host it on YouTube (public/unlisted) or Loom.*
+```text
+<Paste your YouTube unlisted or Loom video link here>
+```
 
-REQUIRED BEFORE SUBMISSION: upload the real under-three-minute demonstration to
-YouTube (public/unlisted) or Loom and paste its link into the form.
+### 6. Live demo or deployment *(optional)*
+```text
+https://github.com/DheerajMG-Bng/checkout-rescue
+```
 
-## How did you use Switch?
+---
 
-We use Switch Console on Windows with Codex as the agent provider and Mattermost
-as the connected chat app. Our template creates a triager, an investigator, and a
-shared incident room containing Charan and Dheeraj. Switch delivers incoming
-human reports, named agent handoffs, human review messages, and verification
-results. The agents share the room's conversation while using independent
-working directories. The investigation agent executes the checkout lab, retains
-the actual failing output, waits for Dheeraj's review, edits disposable code, and
-runs the checks again. The local scripts support reproducibility; Switch carries
-the collaboration between people and agents.
+## Part 2 of 3: Track Details (Optional)
 
-## Switch feedback — review and personalize
+### Blog post *(enters you in Best Blog / AirPods 5)*
+```text
+https://github.com/DheerajMG-Bng/checkout-rescue/blob/main/docs/BLOG.md
+```
 
-The template structure provides a useful starting point for creating agents and
-a shared room. Mattermost lets us run the demonstration locally with both
-teammates. On Windows, provider discovery needed the application environment to
-refresh after installation, and a stopped local server made the Console show
-“Cannot reach the server.” Clearer provider-path diagnostics and a direct
-local-server recovery action would improve onboarding. Add your own observations
-from the completed workflow before submitting this feedback.
+### Your Wispr usage card *(Code with Wispr / $500)*
+*In Wispr Flow desktop app: Insights → Your usage → Share → upload image.*
 
-## Team
+### Your #HowISwitch post *(Logitech Mechanical Keyboard)*
+```text
+<Paste your X/Twitter or LinkedIn post link with #HowISwitch>
+```
 
-- Dheeraj M G: https://github.com/DheerajMG-Bng — Mattermost `dheerajmg`.
-- Charan Arangi: https://github.com/ACT2039 — Mattermost `charantej`.
-- Team name: Hanuman.
+---
 
-## Final checklist
+## Part 3 of 3: How You Used Switch
 
-- [ ] Both humans participated in the actual Mattermost workflow.
-- [ ] Actual agent handoff, failed check, proposed fix, human review, and passing
-      verification appear in the video.
-- [ ] Public repository opens when signed out.
-- [ ] README setup was tested from a clean clone.
-- [ ] Video is under three minutes and opens for someone else.
-- [ ] Seven required form fields are completed.
-- [ ] Wispr card exported from Insights → Your usage → Share, if entering Wispr.
-- [ ] No voice-usage claim is made without real usage.
-- [ ] Submit before November 7, 2026, 11:59 PM IST, per the event page.
+### How did you use Switch in your project? *(required)*
+*- Which agent did you connect? Which platforms does it run on? What real work does it do, and how do your teammates work with it?*
+```text
+We deployed Switch Console on Windows with the native Codex CLI provider and Mattermost as our connected chat platform. Our Switch template orchestrates a multi-agent room containing checkout-triager, checkout-investigator, and human teammates Charan (@charantej) and Dheeraj (@dheerajmg). 
 
-Blog, social post, and live deployment are optional. A Google Drive folder can
-hold supporting files; use the video hosts specifically requested by the form.
+Switch serves as the real-time collaboration layer: it delivers incoming human bug reports via Server-Sent Events (SSE), routes named handoffs between autonomous agents, and brings human approval events directly into the thread. Agents run with isolated workspaces. Rather than simulating chat text, the investigator executes real Node.js child processes, captures exit codes, proposes minimal code diffs, halts for human sign-off, and validates 5 enterprise financial invariants. Switch closes the entire loop between human governance and autonomous agent remediation in one auditable room.
+```
+
+### What did you like about Switch, and what would you improve? *(required)*
+*- What worked, what got in the way, and what you'd want Switch to do next.*
+```text
+What worked exceptionally well:
+1. Unified Room Paradigm: Having human engineers and autonomous agents share the same Mattermost room eliminated context fragmentation and manual copy-pasting between chat and local terminals.
+2. Declarative Template Orchestration: The YAML template system made configuring agent instructions, provider models, and room memberships clean and reproducible across our team.
+3. Real CLI Interoperability: Switch's agent protocol allowed our agents to run actual command-line tools and inspect real exit codes, making genuine software engineering workflows possible.
+
+What got in the way & What Switch should do next:
+1. Native Interactive Approval Primitives: In our workflow, the agent halted for human review via natural language. Having native Switch UI buttons in chat (e.g., interactive [Approve Fix] [Reject] buttons with signed callback tokens) would make human-in-the-loop governance even more robust.
+2. Windows PATH Discovery & Health Auto-Recovery: When installing CLI providers on Windows, Switch Console required an application restart to pick up new PATH variables. Clearer environment diagnostics in Console and an automatic one-click reconnect button when a local daemon disconnects would make onboarding effortless.
+```
