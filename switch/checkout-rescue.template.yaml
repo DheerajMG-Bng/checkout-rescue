@@ -15,10 +15,6 @@ params:
     type: location
     default: local
     input: advanced
-  directory:
-    type: directory
-    default: "{$agents_dir}/{agent}"
-    input: advanced
   bridge:
     type: bridge
     description: Connect the room to your team chat
@@ -39,7 +35,7 @@ agents:
     addressing: anyone
     provider: "{provider}"
     location: "{location}"
-    directory: "{directory}"
+    directory: "{$agents_dir}/{team}-triager"
     repo: https://github.com/DheerajMG-Bng/checkout-rescue
     auto_mode: true
     auto_approve: false
@@ -67,7 +63,7 @@ agents:
     addressing: anyone
     provider: "{provider}"
     location: "{location}"
-    directory: "{directory}"
+    directory: "{$agents_dir}/{team}-investigator"
     repo: https://github.com/DheerajMG-Bng/checkout-rescue
     auto_mode: true
     auto_approve: false
