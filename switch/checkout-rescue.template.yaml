@@ -24,13 +24,15 @@ params:
     description: Connect the room to your team chat
     default: [Mattermost, $first]
   reporter:
-    type: user
+    type: string
     description: Person who reports the bug; use your Mattermost username
     default: charantej
+    pattern: "[a-z0-9][a-z0-9._-]*"
   reviewer:
-    type: user
+    type: string
     description: Person who reviews the proposed fix
     default: dheerajmg
+    pattern: "[a-z0-9][a-z0-9._-]*"
 agents:
   - name: "{team}-triager"
     description: Turns chat reports into actionable checkout incidents and tracks handoffs
