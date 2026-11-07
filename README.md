@@ -150,7 +150,10 @@ suite on Windows and Linux with Node 22.
 
 - Approval is an **operator-recorded observation of chat review**. The CLI does
   not authenticate the supplied username; agent instructions require the actual
-  reviewer to approve in the same thread. This is not a security boundary.
+  reviewer to approve the specific incident in the same room. A review in another
+  thread is linked back after checking the authenticated original message, so
+  the human does not have to approve the identical change twice. This is not a
+  security boundary.
 - File hashes make the before/after implementation explicit. They are not signed
   attestations and do not prevent a local operator from editing evidence.
 - The example operates on disposable local code. It does not deploy changes,
