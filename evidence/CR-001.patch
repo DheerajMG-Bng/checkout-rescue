@@ -1,0 +1,11 @@
+--- a/lab/checkout.mjs
++++ b/lab/checkout.mjs
+@@ -26,7 +26,7 @@
+   }
+   // Business rule: round the order-level discount once, then tax discounted goods.
+   const discountPaise = Math.round(subtotalPaise * discountBps / 10_000);
+-  const discountedSubtotal = Math.round((subtotalPaise - discountPaise) * (10000 - discountBps) / 10000);
++  const discountedSubtotal = subtotalPaise - discountPaise;
+   const taxPaise = Math.round(discountedSubtotal * taxBps / 10_000);
+   // Free shipping depends on the original subtotal, before the coupon.
+   const shippingPaise = subtotalPaise >= freeShippingAtPaise ? 0 : shippingFeePaise;

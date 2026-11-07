@@ -1,0 +1,72 @@
+{
+  "id": "CR-001",
+  "runId": "3e0d03cd-112a-4d1f-81db-d1a65bee0848",
+  "title": "SAVE10 is applied twice",
+  "demo": true,
+  "status": "resolved",
+  "createdAt": "2026-11-07T18:00:47.469Z",
+  "fixture": {
+    "id": "CR-001",
+    "title": "SAVE10 is applied twice",
+    "scenario": "Intentionally seeded demo regression; no production customer data.",
+    "report": "One item costs INR 1,000. With a 10% coupon and no tax or shipping, checkout asks for INR 810. I expected INR 900.",
+    "order": {
+      "items": [
+        {
+          "sku": "DEMO-TSHIRT",
+          "unitPricePaise": 100000,
+          "quantity": 1
+        }
+      ],
+      "discountBps": 1000,
+      "taxBps": 0,
+      "shippingFeePaise": 0
+    },
+    "expectedTotalPaise": 90000
+  },
+  "seedSha256": "9674f4fc7bf1b6be90889d3dc795d51b994746f3cded7abc67eed5c12b54ee52",
+  "events": [
+    {
+      "type": "reported",
+      "at": "2026-11-07T18:00:47.476Z"
+    },
+    {
+      "type": "reproduced",
+      "at": "2026-11-07T18:00:50.792Z",
+      "codeSha256": "9674f4fc7bf1b6be90889d3dc795d51b994746f3cded7abc67eed5c12b54ee52"
+    },
+    {
+      "type": "approved",
+      "by": "@dheerajmg",
+      "message": "@checkout-investigator I approve the proposed CR-001 fix: apply the coupon once in lab/checkout.mjs. Run the checks and show the result.",
+      "at": "2026-11-07T18:19:00.257Z",
+      "mode": "operator-recorded-chat-review"
+    },
+    {
+      "type": "verified",
+      "at": "2026-11-07T18:19:44.579Z",
+      "codeSha256": "6468aaea59a80028b75d0eda34a0408c240e0997bd1887456762185185cd8ca3"
+    }
+  ],
+  "before": {
+    "at": "2026-11-07T18:00:50.792Z",
+    "codeSha256": "9674f4fc7bf1b6be90889d3dc795d51b994746f3cded7abc67eed5c12b54ee52",
+    "exitCode": 1,
+    "stdout": "FAIL 10% coupon applied once: expected=90000 actual=81000 paise\nPASS No coupon leaves price unchanged: expected=100000 actual=100000 paise\nFAIL Discount precedes tax: expected=106200 actual=95580 paise\nFAIL Free shipping uses original subtotal: expected=90000 actual=81000 paise\nFAIL Rounding occurs once: expected=273 actual=246 paise\nPASS 100% discount is zero: expected=0 actual=0 paise\n2/6 checks passed\n",
+    "stderr": ""
+  },
+  "approval": {
+    "by": "@dheerajmg",
+    "message": "@checkout-investigator I approve the proposed CR-001 fix: apply the coupon once in lab/checkout.mjs. Run the checks and show the result.",
+    "at": "2026-11-07T18:19:00.257Z",
+    "mode": "operator-recorded-chat-review"
+  },
+  "after": {
+    "at": "2026-11-07T18:19:44.579Z",
+    "codeSha256": "6468aaea59a80028b75d0eda34a0408c240e0997bd1887456762185185cd8ca3",
+    "exitCode": 0,
+    "stdout": "PASS 10% coupon applied once: expected=90000 actual=90000 paise\nPASS No coupon leaves price unchanged: expected=100000 actual=100000 paise\nPASS Discount precedes tax: expected=106200 actual=106200 paise\nPASS Free shipping uses original subtotal: expected=90000 actual=90000 paise\nPASS Rounding occurs once: expected=273 actual=273 paise\nPASS 100% discount is zero: expected=0 actual=0 paise\n6/6 checks passed\n",
+    "stderr": ""
+  },
+  "provenance": "Actual seeded demo run by the investigation agent through Switch and Mattermost. Original human review was checked and linked across threads in the same room. Review metadata is operator-recorded, not cryptographic identity proof."
+}

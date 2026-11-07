@@ -162,6 +162,20 @@ suite on Windows and Linux with Node 22.
   are required for the full demonstration. Unit tests alone do not prove that
   the chat integration is running.
 
+## Recorded team run
+
+The team ran CR-001 through Switch and Mattermost on November 7, 2026. The
+investigation agent reproduced the double coupon (2/6 checks passed), recorded
+Dheeraj's explicit review, applied a one-line correction, and verified the
+result (6/6 checks passed). An approval posted in another thread was linked to
+the incident after checking the original human message.
+
+- [Actual execution output and code hashes](evidence/CR-001.json)
+- [Actual one-line implementation change](evidence/CR-001.patch)
+
+This is a seeded demonstration, not a production incident. The video is recorded
+and uploaded separately by the team.
+
 ## Submission materials
 
 - [Three-minute demo guide](docs/DEMO.md)
